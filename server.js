@@ -62,13 +62,22 @@ app.get('/api/profile', function(req, res){
     githubLink: "https://github.com/kkuo57",
     githubProfileImage: "#",
     personalSiteLink: "https://kkuo57.github.io",
-    currentCity: "San Francisco",
+    currentCity: "Emeryville",
     favTeams: { 
       football: "San Francisco 49ers",
       basketball: "Golden State Warriors",
       baseball: "San Francisco Giants",
       hockey: "San Jose Sharks"
     }
+  });
+});
+
+app.get('/api/destinations', function(req, res){
+  db.Destination.find({}, function(err, destinations){
+    if (err){
+      return console.log(err)
+    }
+    res.json(destinations);
   });
 });
 
