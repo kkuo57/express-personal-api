@@ -81,6 +81,19 @@ app.get('/api/destinations', function(req, res){
   });
 });
 
+app.post('/api/destinations', function(req, res){
+  var newDestination = new db.Destination({
+    name: req.body
+  });
+  newDestination.save(function(err, location){
+    if (err){
+      return console.log("save part error");
+    }
+    console.log("saved ", destination.name);
+    res.json(destination);
+  })
+});
+
 /**********
  * SERVER *
  **********/
