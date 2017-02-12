@@ -2,7 +2,8 @@ var mongoose = require('mongoose');
   Schema = mongoose.Schema;
 
 var DestinationSchema = new Schema({
-  name: String
+  name: String,
+  country: String
 });
 
 var Destination = mongoose.model('Destination', DestinationSchema);

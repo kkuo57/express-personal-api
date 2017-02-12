@@ -5,47 +5,144 @@ var db = require('./models');
 
 var destination_list = [
   {
-    name: "London"
+    name: "London",
+    country: "England"
   },
   {
-    name: "Paris"
+    name: "Paris",
+    country: "France"
   },
   {
-    name: "O'ahu"
+    name: "O'ahu",
+    country: "USA"
   },
   {
-    name: "Maui"
+    name: "Maui",
+    country: "USA"
   },
   {
-    name: "Island of Hawai'i"
+    name: "Island of Hawai'i",
+    country: "USA"
   },
   {
-    name: "Kaua'i"
+    name: "Kaua'i",
+    country: "USA"
   },
   {
-    name: "New York City"
+    name: "New York City",
+    country: "USA"
   },
   {
-    name: "Miami"
+    name: "Miami",
+    country: "USA"
   },
   {
-    name: "Orlando"
+    name: "Orlando",
+    country: "USA"
   },
   {
-    name: "Chicago"
+    name: "Chicago",
+    country: "USA"
   },
   {
-    name: "Indianapolis"
+    name: "Las Vegas",
+    country: "USA"
   },
   {
-    name: "Washington D.C."
+    name: "Washington D.C.",
+    country: "USA"
   },
   {
-    name: "Tokyo"
+    name: "Tokyo",
+    country: "Japan"
   },
   {
-    name: "Kyoto"
-  }
+    name: "Kyoto",
+    country: "Japan"
+  },
+  {
+    name: "Osaka",
+    country: "Japan"
+  },
+  {
+    name: "Niigata",
+    country: "Japan"
+  },
+  {
+    name: "Hiroshima",
+    country: "Japan"
+  },
+  {
+    name: "Rome",
+    country: "Italy"
+  },
+   {
+    name: "Venice",
+    country: "Italy"
+  },
+  {
+    name: "Florence",
+    country: "Italy"
+  },
+  {
+    name: "Barcelona",
+    country: "Spain"
+  },
+  {
+    name: "Amsterdam",
+    country: "Netherlands"
+  },
+  {
+    name: "Berlin",
+    country: "Germany"
+  },
+  {
+    name: "Munich",
+    country: "Germany"
+  },
+  {
+    name: "Singapore",
+    country: "Singapore"
+  },
+  {
+    name: "Puerto Princesa",
+    country: "Philippines"
+  },
+  {
+    name: "Seoul",
+    country: "South Korea"
+  },
+  {
+    name: "Korean Demilitarized Zone",
+    country: [
+      "South Korea",
+      "North Korea"
+      ]
+  },
+  {
+    name: "Hong Kong",
+    country: "China"
+  },
+  {
+    name: "Shanghai",
+    country: "China"
+  },
+  {
+    name: "Hangzhou",
+    country: "China"
+  },
+  {
+    name: "Taipei",
+    country: "Taiwan"
+  },
+  {
+    name: "Tainan",
+    country: "Taiwan"
+  },
+  {
+    name: "Kaohsiung",
+    country: "Taiwan"
+  },
 ]
 
 db.Destination.remove({}, function(err, destinations){
@@ -55,6 +152,6 @@ db.Destination.remove({}, function(err, destinations){
         return console.log("Error:", err);
       }
     console.log("Created all destinations")
-    process.exit(); // we're all done! Exit the program.
+    process.exit();
     });
 })

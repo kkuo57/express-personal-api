@@ -51,7 +51,11 @@ app.get('/api', function apiIndex(req, res) {
     endpoints: [
       {method: "GET", path: "/api", description: "Describes all available endpoints"},
       {method: "GET", path: "/api/profile", description: "Data about me"}, // CHANGE ME
-      {method: "POST", path: "/api/campsites", description: "E.g. Create a new campsite"} // CHANGE ME
+      {method: "GET", path: "/api/destinations", description: "Places I've visited"},
+      {method: "POST", path: "/api/suggestions", description: "Suggest a place to visit"},
+      {method: "GET", path: "/api/suggestions", description: "Suggestions for places to visit"},
+      {method: "PUT", path: "/api/suggestions", description: "Update a suggestion"},
+      {method: "DELETE", path: "/api/suggestions", description: "Delete a suggestion"}
     ]
   })
 });
@@ -77,12 +81,14 @@ app.get('/api/destinations', function(req, res){
     if (err){
       return console.log(err)
     }
-    res.json(destinations);
+    res.json({
+      data: destinations
+    });
   });
 });
 
-app.post('/api/destinations', function(req, res){
-  var newDestination = new db.Destination({
+app.post('/api/suggestions', function(req, res){
+  var newSuggestion = new db.Suggestion({
     name: req.body
   });
   newDestination.save(function(err, location){
