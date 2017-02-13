@@ -152,7 +152,7 @@ app.put("/api/suggestions/:_id", function(req, res){
 // to delete a suggestion
 app.delete('/api/suggestions/:id', function(req, res){
   var suggId = req.params.id;
-  db.Suggestion.findOneAndRemove({ _id: suggId }, function(err, deletedSuggestion){
+  db.Suggestion.findOneAndRemove({ _id: suggId}, function(err, deletedSuggestion){
     res.json(deletedSuggestion);
   });
 });
