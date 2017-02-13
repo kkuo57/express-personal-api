@@ -42,15 +42,15 @@ app.get('/', function homepage(req, res) {
  * JSON API Endpoints
  */
 
+// hardcoded api directory
 app.get('/api', function apiIndex(req, res) {
-  // TODO: Document all your api endpoints below as a simple hardcoded JSON object.
   res.json({
     message: "Welcome to my personal api! Here's what you need to know!",
     documentationUrl: "https://github.com/kkuo57/express-personal-api/blob/master/README.md",
     baseUrl: "https://shielded-journey-73469.herokuapp.com/",
     endpoints: [
       {method: "GET", path: "/api", description: "Describes all available endpoints"},
-      {method: "GET", path: "/api/profile", description: "Data about me"}, // CHANGE ME
+      {method: "GET", path: "/api/profile", description: "Info about me"},
       {method: "GET", path: "/api/destinations", description: "Places I've visited"},
       {method: "POST", path: "/api/suggestions", description: "Suggest a place to visit"},
       {method: "GET", path: "/api/suggestions", description: "Suggestions for places to visit"},
@@ -60,6 +60,7 @@ app.get('/api', function apiIndex(req, res) {
   })
 });
 
+// hardcoded profile info
 app.get('/api/profile', function(req, res){
   res.json({
     name: "Kevin Kuo",
@@ -76,6 +77,7 @@ app.get('/api/profile', function(req, res){
   });
 });
 
+// to get all destinations
 app.get('/api/destinations', function(req, res){
   db.Destination.find({}, function(err, destinations){
     if (err){
@@ -87,16 +89,29 @@ app.get('/api/destinations', function(req, res){
   });
 });
 
+// to get all the suggestions
+app.get('/api/suggestions', function(req, res){
+  db.Suggestion.find({}, function(err, suggestions){
+    if (err){
+      return console.log(err)
+    }
+    res.json({
+      data: suggestions
+    });
+  });
+});
+
+// to post a suggestion
 app.post('/api/suggestions', function(req, res){
   var newSuggestion = new db.Suggestion({
     name: req.body
   });
-  newDestination.save(function(err, location){
+  newSuggestion.save(function(err, location){
     if (err){
       return console.log("save part error");
     }
-    console.log("saved ", destination.name);
-    res.json(destination);
+    console.log("saved ", suggestion.name);
+    res.json(suggestion);
   })
 });
 

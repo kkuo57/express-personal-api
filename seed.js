@@ -142,8 +142,8 @@ var destination_list = [
   {
     name: "Kaohsiung",
     country: "Taiwan"
-  },
-]
+  }
+];
 
 db.Destination.remove({}, function(err, destinations){
   console.log("removed destinations");
