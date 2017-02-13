@@ -118,9 +118,9 @@ app.get('/api/suggestions/:id', function (req, res) {
   db.Book.findById(req.params.id, function(err, sugg){
     if (err){
       res.status(500).send(err);
-      return
+      return;
     }
-      res.json(sugg)
+      res.json(sugg);
   });
 });
 
@@ -129,7 +129,7 @@ app.post('/api/suggestions', function(req, res){
   var newSuggestion = new db.Suggestion({
     name: req.body
   });
-  newSuggestion.save(function(err, location){
+  newSuggestion.save(function(err, suggestion){
     if (err){
       return console.log("save part error");
     }
