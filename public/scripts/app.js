@@ -25,6 +25,7 @@ $(document).ready(function(){
     $.ajax({
       method: 'POST',
       url: '/api/suggestions',
+      data: $(this).serialize(),
       success: onSuccess,
       error: onError
     });
@@ -38,5 +39,4 @@ $(document).ready(function(){
       error: onError
     });
   })
-
 });
