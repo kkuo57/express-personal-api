@@ -145,13 +145,39 @@ var destination_list = [
   }
 ];
 
+var suggestion_list = [
+  {
+    name: "Prague",
+    country: "Czech Republic"
+  },
+  {
+    name: "Brussels",
+    country: "Belgium"
+  }
+]
+
+// remove all destinations
 db.Destination.remove({}, function(err, destinations){
   console.log("removed destinations");
+  // add destinations list
     db.Destination.create(destination_list, function(err, destinations){
       if (err){
         return console.log("Error:", err);
       }
     console.log("Created all destinations")
+    });
+})
+
+
+// remove all suggestions
+db.Suggestion.remove({}, function(err, suggestions){
+  console.log("removed suggestions");
+  // add suggestions list
+    db.Suggestion.create(suggestion_list, function(err, suggestions){
+      if (err){
+        return console.log("Error:", err);
+      }
+    console.log("Created all suggestions")
     process.exit();
     });
 })

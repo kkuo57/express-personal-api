@@ -18,10 +18,33 @@
   </head>
   <body>
     <div class="container">
-      <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-          <h1>Tell Me Where to Go!</h1>
-          <h4><a href="/api">Read My API Documentation</a></h4>
+      <div class="col-md-12">
+        <div class="row">
+          <div class="col-md-8 col-md-offset-2">
+            <h1>Tell Me Where to Go!</h1>
+            <h4><a href="/api">Read My API Documentation</a></h4>
+            <form class="form-inline" id="newSuggestionForm" method="POST">
+            <div class="form-group">
+              <label for="place">Place</label>
+              <input type="text" class="form-control" name="place" placeholder="Suggest a Place">
+            </div>
+            <div class="form-group">
+              <label for="country">Country</label>
+              <input type="text" class="form-control" name="country" placeholder="Enter Country">
+            </div>
+            <button type="submit" class="btn btn-default">Submit</button>
+          </form>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div id="pastPlaces">
+            <h4>Places I've Been</h4>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div id="suggestedPlaces">
+            <h4>Suggested Spots</h4>
+          </div>
         </div>
       </div>
     </div>

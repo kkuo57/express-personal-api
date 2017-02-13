@@ -81,12 +81,24 @@ app.get('/api/profile', function(req, res){
 app.get('/api/destinations', function(req, res){
   db.Destination.find({}, function(err, destinations){
     if (err){
-      return console.log(err)
+      res.status(500).send(err);
+      return;
     }
     res.json({
       data: destinations
     });
   });
+});
+
+// find one destination by id
+app.get('/api/destinations/:id', function (req, res) {
+  db.Destination.findById(req.params.id, function(err, dest){
+    if (err){
+      res.status(500).send(err);
+      return;
+    }
+      res.json(dest);
+    });
 });
 
 // to get all the suggestions
@@ -98,6 +110,17 @@ app.get('/api/suggestions', function(req, res){
     res.json({
       data: suggestions
     });
+  });
+});
+
+// find one suggestion by id
+app.get('/api/suggestions/:id', function (req, res) {
+  db.Book.findById(req.params.id, function(err, sugg){
+    if (err){
+      res.status(500).send(err);
+      return
+    }
+      res.json(sugg)
   });
 });
 
@@ -113,6 +136,25 @@ app.post('/api/suggestions', function(req, res){
     console.log("saved ", suggestion.name);
     res.json(suggestion);
   })
+});
+
+// to update a suggestion
+app.put("/api/suggestions/:_id", function(req, res){
+  var suggId = req.params._id;
+  var suggData = req.body;
+
+  db.Suggestion.findOneAndUpdate(
+    {_id: suggId}, suggData, {new: true}, function(err, updatedSuggestion){
+      res.send(updatedSuggestion);
+  });
+});
+
+// to delete a suggestion
+app.delete('/api/suggestions/:id', function(req, res){
+  var suggId = req.params.id;
+  db.Suggestion.findOneAndRemove({ _id: suggId }, function(err, deletedSuggestion){
+    res.json(deletedSuggestion);
+  });
 });
 
 /**********
