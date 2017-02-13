@@ -115,7 +115,7 @@ app.get('/api/suggestions', function(req, res){
 
 // find one suggestion by id
 app.get('/api/suggestions/:id', function (req, res) {
-  db.Book.findById(req.params.id, function(err, sugg){
+  db.Suggestion.findById(req.params.id, function(err, sugg){
     if (err){
       res.status(500).send(err);
       return;
