@@ -1,4 +1,4 @@
-console.log("Sanity Check: JS is working!");
+var allDestinations = [];
 var $suggestionList;
 var allSuggestions = [];
 
@@ -11,14 +11,14 @@ $(document).ready(function(){
     method: 'GET',
     url: '/api/destinations',
     success: onDestinationSuccess,
-    error: onDestinationError
+    error: onError
   });
 
   $.ajax({
     method: 'GET',
     url: '/api/suggestions',
     success: onSuggestionSuccess,
-    error: onSuggestionError
+    error: onError
   });
 
   $('#newSuggestionForm').on('submit', function(event){
@@ -28,7 +28,7 @@ $(document).ready(function(){
       url: '/api/suggestions',
       data: $(this).serialize(),
       success: onSubmitSuccess,
-      error: onSubmitError
+      error: onError
     });
   });
 
@@ -37,35 +37,22 @@ $(document).ready(function(){
       method: 'DELETE',
       url: '/api/suggestions/' + $(this).attr('data._id'),
       success: onDeleteSuccess,
-      error: onDeleteError
+      error: onError
     });
   })
 });
 
-
-// function getDestinationHtml(destination) {
-//   return `<hr>
-//           <p>
-//           ${(destinations.name) ? destinations.country : 'null'}
-//           </p>
-//           `;
-// }
-
-// function getAllDestinationsHtml(destinations) {
-//   return destinations.map(getDestinationHtml).join("");
-// };
-
-// function render (){
-//   $destinationList.empty();
-//   var destinationHtml = getAllDestinationsHtml(allDestinations);
-//   $destinationList.append(destinationHtml);
-// };
-
 function onDestinationSuccess(json){
-  $destinationList.empty();
-  $destinationList.append(json);
+  allDestinations = json;
+  console.log(allDestinations);
+  allDestinations.forEach(function(destination){
+    $destinationList.append(
+      `<hr>
+      <h5>${destination.name}, ${destination.country}</h5>`
+      )
+  });
 };
 
-function onDestinationError(e){
+function onError(){
   console.log("Error")
 }

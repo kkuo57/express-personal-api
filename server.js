@@ -84,9 +84,7 @@ app.get('/api/destinations', function(req, res){
       res.status(500).send(err);
       return;
     }
-    res.json({
-      data: destinations
-    });
+    res.json(destinations);
   });
 });
 
