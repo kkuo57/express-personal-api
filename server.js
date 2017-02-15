@@ -105,9 +105,7 @@ app.get('/api/suggestions', function(req, res){
     if (err){
       return console.log(err)
     }
-    res.json({
-      data: suggestions
-    });
+    res.json(suggestions);
   });
 });
 

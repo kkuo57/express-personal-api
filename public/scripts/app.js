@@ -44,11 +44,20 @@ $(document).ready(function(){
 
 function onDestinationSuccess(json){
   allDestinations = json;
-  console.log(allDestinations);
   allDestinations.forEach(function(destination){
     $destinationList.append(
       `<hr>
       <h5>${destination.name}, ${destination.country}</h5>`
+      )
+  });
+};
+
+function onSuggestionSuccess(json){
+  allSuggestions = json;
+  allSuggestions.forEach(function(suggestion){
+    $suggestionList.append(
+      `<hr>
+      <h5>${suggestion.name}, ${suggestion.country}</h5>`
       )
   });
 };

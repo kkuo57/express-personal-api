@@ -53,6 +53,10 @@ var destination_list = [
     country: "USA"
   },
   {
+    name: "New Orleans",
+    country: "USA"
+  },
+  {
     name: "Tokyo",
     country: "Japan"
   },
@@ -142,6 +146,10 @@ var destination_list = [
   {
     name: "Kaohsiung",
     country: "Taiwan"
+  },
+  {
+    name: "Acapulco",
+    country: "Mexico"
   }
 ];
 
